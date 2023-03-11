@@ -2,6 +2,21 @@ version: "3"
 
 services:
 
+  db:
+    image: postgres:14-alpine
+    container_name: musubi_postgres 
+    ports: 
+      - "15432:5432"
+    environment:
+      - "POSTGRES_USER=musubi"
+      - "POSTGRES_PASSWORD=Hogepiyo"
+      - "POSTGRES_DB=musubi"
+    volumes:
+      - ./db/init:/docker-entrypoint-initdb.d
+    networks:
+      musubi_net:
+        ipv4_address: 172.16.0.2
+
   app:
     build: ./tomcat
     container_name: musubi_tomcat
