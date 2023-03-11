@@ -2,9 +2,15 @@
 <html lang="ja" xmlns:th="http:http://www.thmeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>DashBoard</title>
+    <link th:href="@{/webjars/bootstrap/4.4.1-1/css/bootstrap.min.css}" rel="stylesheet"/>
 </head>
 <body>
-<h1 th:text="${message}"></h1>
+<div class="container">
+    <p style="text-align: center;" th:text="${message}"></p>
+    <form class="form-signin" th:action="@{/logout}" method="post">
+        <button class="btn btn-lg btn-primary btn-block" type="submit">ログアウト</button>
+    </form>
+</div>
 </body>
 </html>
