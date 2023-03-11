@@ -6,11 +6,8 @@ services:
     build: ./tomcat
     container_name: musubi_tomcat
     volumes:
-      - "./src/build/libs/musubi.war:/usr/local/tomcat/webapps/musubi.war:cached"
-      - "./tomcat/logs:/usr/local/tomcat/logs:cached"
-      - "/etc/passwd:/etc/passwd:ro"
-      - "/etc/group:/etc/group:ro"
-    user: "${UID:-1000}:${GID:-1000}"
+      - "./tomcat/musubi.war:/usr/local/tomcat/webapps/musubi.war:cached"
+      #- "./tomcat/logs:/usr/local/tomcat/logs:cached"
     ports:
       - "8090:8080"
       - "9000:8000"

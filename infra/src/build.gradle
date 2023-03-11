@@ -41,3 +41,12 @@ tasks.withType(KotlinCompile) {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+task copyWar(type: Copy) {
+	from './build/libs/musubi.war'
+	into '../tomcat/'
+}
+
+task deploy {
+	dependsOn war, copyWar
+}
