@@ -3,11 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-    <link th:href="@{/webjars/bootstrap/4.4.1-1/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+    <script th:src="@{/webjars/vue/dist/vue.global.js}" th:if="${@environment.acceptsProfiles('default')}"/>
+    <script th:src="@{/webjars/vue/dist/vue.global.prod.js}" th:if="${@environment.acceptsProfiles('default')}"/>
+    <script th:src="@{/webjars/vuex/dist/vuex.global.js}" th:if="${@environment.acceptsProfiles('default')}"></script>
 </head>
 <body>
-<div class="container">
+<div id="login-form" class="container">
     <p style="text-align: center;" th:text="${message}"></p>
+    <p style="text-align: center;">{{ message }}</p>
     <form class="form-signin" th:action="@{/login}" method="post">
         <div th:if="${showErrorMsg}" class="alert alert-danger" role="alert" th:text="${errorMsg}">
             ※エラーメッセージ※
@@ -25,5 +29,15 @@
         <button class="btn btn-lg btn-primary btn-block" type="submit">ログイン</button>
     </form>
 </div>
+<script type="text/javascript" th:inline="javascript">
+const loginForm = Vue.createApp({
+    data() {
+        return {
+            message: 'Vue埋め込み'
+        }
+    }
+})
+loginForm.mount('#login-form')
+</script>
 </body>
 </html>
