@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jp.musubi.mapper.MsbUserMapper">
+
+    <select id="findAll" resultType="MsbUser">
+        SELECT
+            id,
+            name,
+            password
+        FROM
+            users
+    </select>
+
+    <select id="findById" resultType="MsbUser">
+        SELECT
+            id,
+            name,
+            password
+        FROM
+            users
+        WHERE
+            id = #{id}
+    </select>
+
+</mapper>
