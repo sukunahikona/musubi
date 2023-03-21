@@ -17,7 +17,7 @@ class SecurityConfig {
     @Bean
     fun configure(http: HttpSecurity): SecurityFilterChain {
 
-        http.authorizeHttpRequests().requestMatchers("/login", "/logout", "/auth/*", "/webjars/**").permitAll().anyRequest().authenticated()
+        http.authorizeHttpRequests().requestMatchers("/login", "/logout", "/auth/*", "/webjars/**", "/js/**").permitAll().anyRequest().authenticated()
 
         http.csrf().disable()
 
@@ -27,7 +27,7 @@ class SecurityConfig {
             .loginProcessingUrl("/login")
             .failureUrl("/auth/login?error=true")
             .defaultSuccessUrl("/dashboard/top", true)
-                .usernameParameter("username")
+                .usernameParameter("userid")
                 .passwordParameter("password")
 
         http.logout().logoutRequestMatcher(AntPathRequestMatcher("/logout"))

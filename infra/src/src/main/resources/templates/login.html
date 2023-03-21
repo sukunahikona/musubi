@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <title>Login</title>
     <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
-    <script th:src="@{/webjars/vue/dist/vue.global.js}" th:if="${@environment.acceptsProfiles('default')}"/>
-    <script th:src="@{/webjars/vue/dist/vue.global.prod.js}" th:if="${@environment.acceptsProfiles('default')}"/>
+    <script th:src="@{/webjars/vue/dist/vue.global.js}" th:if="${@environment.acceptsProfiles('default')}"></script>
+    <script th:src="@{/webjars/vue/dist/vue.global.prod.js}" th:if="${@environment.acceptsProfiles('default')}"></script>
     <script th:src="@{/webjars/vuex/dist/vuex.global.js}" th:if="${@environment.acceptsProfiles('default')}"></script>
 </head>
 <body>
@@ -21,7 +21,7 @@
         </div>
 
         <p>
-            <input type="text" id="username" name="username" class="form-control" placeholder="ユーザID" required autofocus>
+            <input type="text" id="userid" name="userid" class="form-control" placeholder="ユーザID" required autofocus>
         </p>
         <p>
             <input type="password" id="password" name="password" class="form-control" placeholder="パスワード" required>
@@ -29,15 +29,6 @@
         <button class="btn btn-lg btn-primary btn-block" type="submit">ログイン</button>
     </form>
 </div>
-<script type="text/javascript" th:inline="javascript">
-const loginForm = Vue.createApp({
-    data() {
-        return {
-            message: 'Vue埋め込み'
-        }
-    }
-})
-loginForm.mount('#login-form')
-</script>
+<script th:src="@{/js/login/login.js}" type="text/javascript" th:inline="javascript"></script>
 </body>
 </html>
