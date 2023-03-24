@@ -19,6 +19,7 @@ repositories {
 }
 
 dependencies {
+	implementation 'org.springframework.session:spring-session-jdbc:3.0.0'
 	implementation 'org.webjars.npm:vuex:4.0.0-rc.2'
 	implementation 'org.webjars.npm:vue:3.2.20'
 	implementation 'org.webjars:webjars-locator:0.42'
