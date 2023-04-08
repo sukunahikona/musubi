@@ -6,7 +6,7 @@ jobs:
   Test:
     runs-on: ubuntu-latest
     container:
-      image: alpine:3.17
+      image: gradle:7.6.1-jdk17-alpine
     steps:
       - name: start
         run: echo Test start
