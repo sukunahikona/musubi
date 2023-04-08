@@ -3,13 +3,25 @@ on:
   push:
 
 jobs:
-  Build1:
+  Test:
     runs-on: ubuntu-latest
+    container:
+      image: alpine:3.17
     steps:
-      - run: echo Build1
+      - name: start
+        run: echo Test start
+      - run: pwd
+      - run: ls
+      - name: end
+        run: echo Test end
 
-  Build2:
+  Build:
     runs-on: ubuntu-latest
-    needs: Build1
+    container:
+      image: alpine:3.17
+    needs: Test
     steps:
-      - run: echo Build2
+      - name: start
+        run: echo Build start
+      - name: end
+        run: echo Test end  
