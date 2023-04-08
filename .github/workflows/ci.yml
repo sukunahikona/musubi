@@ -17,7 +17,7 @@ jobs:
       - name: move working dir
         run: cd ./infra/src
       - name: execute junit
-        run: gradlew test
+        run: ./gradlew test
       - name: end
         run: echo Test end
 
