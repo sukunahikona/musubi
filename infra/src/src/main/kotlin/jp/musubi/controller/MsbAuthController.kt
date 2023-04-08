@@ -11,6 +11,6 @@ class MsbAuthController {
     @GetMapping("/login")
     fun login(model: Model): String {
         model.addAttribute("message", "ログイン")
-        return "login"
+        return "auth/login"
     }
 }

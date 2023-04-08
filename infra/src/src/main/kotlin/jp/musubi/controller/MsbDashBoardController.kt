@@ -12,12 +12,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 class MsbDashBoardController {
     @GetMapping("/top")
     fun show(model: Model): String {
-        var authentication:Authentication = SecurityContextHolder.getContext().authentication
-        var principal:Any? = null
-        if (authentication != null) {
-            principal = authentication.principal
-            print(principal.toString())
-        }
+        val authentication:Authentication = SecurityContextHolder.getContext().authentication
+        val principal:Any? = authentication.principal
+        print(principal.toString())
         model.addAttribute("message", "ダッシュボード")
         return "top"
     }
