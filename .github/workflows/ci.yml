@@ -14,11 +14,9 @@ jobs:
         uses: actions/checkout@v2
       - name: checking checkout artificate
         run: ls
-      - name: move working dir
-        run: cd ./infra/src
-      - run: ls  
       - name: execute junit
         run: ./gradlew test
+        working-directory: ./infra/src
       - name: end
         run: echo Test end
 
