@@ -12,6 +12,8 @@ jobs:
         run: echo Test start
       - run: pwd
       - run: ls
+      - run: cd ./infra/src
+      - run: ls
       - name: end
         run: echo Test end
 
