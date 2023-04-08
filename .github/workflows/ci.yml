@@ -16,6 +16,7 @@ jobs:
         run: ls
       - name: move working dir
         run: cd ./infra/src
+      - run: ls  
       - name: execute junit
         run: ./gradlew test
       - name: end
