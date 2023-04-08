@@ -15,7 +15,7 @@ jobs:
       - name: checking checkout artificate
         run: ls
       - name: execute junit
-        run: ./gradlew test
+        run: gradle test
         working-directory: ./infra/src
       - name: end
         run: echo Test end
