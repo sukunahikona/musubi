@@ -1,4 +1,4 @@
-name: Test,Build,Deploy Jobs
+name: Test, Build, Deploy Jobs
 on:
   push:
 
@@ -11,10 +11,13 @@ jobs:
       - name: start
         run: echo Test start
       - name: checkout
-        uses: actions/checkout@v2  
-      - run: ls
-      - run: cd ./infra/src
-      - run: ls
+        uses: actions/checkout@v2
+      - name: checking checkout artificate
+        run: ls
+      - name: move working dir
+        run: cd ./infra/src
+      - name: execute junit
+        run: gradlew test
       - name: end
         run: echo Test end
 
