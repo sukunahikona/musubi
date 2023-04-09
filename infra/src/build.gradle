@@ -68,5 +68,5 @@ task copyWar(type: Copy) {
 }
 
 task deploy {
-	dependsOn war, copyWar
+	dependsOn build, copyWar
 }

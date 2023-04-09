@@ -22,7 +22,7 @@ services:
     container_name: musubi_tomcat
     volumes:
       - "./tomcat/musubi.war:/usr/local/tomcat/webapps/musubi.war:rw"
-      #- "./tomcat/logs:/usr/local/tomcat/logs:cached"
+      - "./tomcat/logs:/usr/local/tomcat/logs:rw"
     ports:
       - "8090:8080"
       - "9000:8000"
@@ -30,6 +30,7 @@ services:
       TZ: Asia/Tokyo
       JPDA_ADDRESS: 0.0.0.0:8000
       JPDA_TRANSPORT: dt_socket
+      SPRING_PROFILES_ACTIVE: dev
     networks:
       musubi_net:
         ipv4_address: 172.16.0.3

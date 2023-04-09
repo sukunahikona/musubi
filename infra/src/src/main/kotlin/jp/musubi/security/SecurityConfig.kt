@@ -20,8 +20,8 @@ class SecurityConfig {
 
         // 静的リソースアクセスは許容
         http.authorizeHttpRequests().requestMatchers("/login", "/logout", "/auth/*", "/webjars/**", "/js/**").permitAll().anyRequest().authenticated()
-        // 一旦csrf非活性
-        http.csrf().disable()
+        // csrf非活性
+        //http.csrf().disable()
 
         // ログイン各種の設定
         http
