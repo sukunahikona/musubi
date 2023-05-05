@@ -19,7 +19,7 @@ class SecurityConfig {
     fun configure(http: HttpSecurity): SecurityFilterChain {
 
         // 静的リソースアクセスは許容
-        http.authorizeHttpRequests().requestMatchers("/login", "/logout", "/auth/*", "/webjars/**", "/js/**").permitAll().anyRequest().authenticated()
+        http.authorizeHttpRequests().requestMatchers("/login", "/logout", "/auth/*", "/webjars/**", "/js/**", "/health/**").permitAll().anyRequest().authenticated()
         // csrf非活性
         //http.csrf().disable()
 
