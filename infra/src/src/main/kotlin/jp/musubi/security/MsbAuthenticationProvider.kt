@@ -11,6 +11,7 @@ import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.authority.AuthorityUtils
 import org.springframework.security.core.userdetails.User
 import org.springframework.security.core.userdetails.UserDetails
+import org.springframework.security.core.userdetails.UsernameNotFoundException
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.transaction.annotation.Transactional
 
@@ -34,8 +35,8 @@ open class MsbAuthenticationProvider : AbstractUserDetailsAuthenticationProvider
         val password:String = authentication?.credentials.toString()
 
         // ユーザ情報検索
-        val user:MsbUser? = msbUserService.findById(userId)
-        if (passwordEncoder.matches(password, user!!.password)) {
+        val user:MsbUser = msbUserService.findById(userId) ?: throw UsernameNotFoundException(username)
+        if (passwordEncoder.matches(password, user.password)) {
             // あれば認証通す
             // ROLE無指定ならデフォルトユーザへ
             val roles: List<String> = MsbRole.fromOrdinal(user.role ?: 1).roleList
@@ -46,7 +47,7 @@ open class MsbAuthenticationProvider : AbstractUserDetailsAuthenticationProvider
                     .authorities(authorities)
                     .build()
         }
-        throw MsbException("User not found: $userId");
+        throw UsernameNotFoundException(username)
     }
 
 
