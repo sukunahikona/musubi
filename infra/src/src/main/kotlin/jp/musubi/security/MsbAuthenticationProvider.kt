@@ -31,7 +31,7 @@ open class MsbAuthenticationProvider : AbstractUserDetailsAuthenticationProvider
     override fun retrieveUser(username: String?, authentication: UsernamePasswordAuthenticationToken?): UserDetails? {
         // ユーザ情報の初期化
 
-        val userId:String = username ?: throw MsbException("user ID is null")
+        val userId:String = username ?: throw UsernameNotFoundException("user name is null")
         val password:String = authentication?.credentials.toString()
 
         // ユーザ情報検索
