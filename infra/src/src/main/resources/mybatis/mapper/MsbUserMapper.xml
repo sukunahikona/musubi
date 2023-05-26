@@ -8,7 +8,8 @@
         SELECT
             id,
             name,
-            password
+            password,
+            role
         FROM
             users
     </select>
@@ -17,7 +18,8 @@
         SELECT
             id,
             name,
-            password
+            password,
+            role
         FROM
             users
         WHERE

@@ -1,8 +1,9 @@
 package jp.musubi.security
 
-import jp.musubi.mapper.MsbUserMapper
 import jp.musubi.model.MsbUser
 import jp.musubi.service.MsbUserService
+import jp.musubi.util.MsbException
+import jp.musubi.util.MsbRole
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.authentication.dao.AbstractUserDetailsAuthenticationProvider
@@ -28,23 +29,25 @@ open class MsbAuthenticationProvider : AbstractUserDetailsAuthenticationProvider
 
     @Transactional
     override fun retrieveUser(username: String?, authentication: UsernamePasswordAuthenticationToken?): UserDetails? {
-        val userId:String? = username
-        val password:String = authentication?.credentials.toString()
-        val authorities:List<GrantedAuthority> = AuthorityUtils.createAuthorityList("ROLE_DEFAULT")
-        //val users:List<MsbUser> = msbUserService.findAll()
-        if (userId == null) {
-            throw UsernameNotFoundException("User id is null");
-        }
+        // ユーザ情報の初期化
 
-        val user:MsbUser? = msbUserService.findById(userId)
-        if (user != null && passwordEncoder.matches(password, user.password)) {
+        val userId:String = username ?: throw UsernameNotFoundException("user name is null")
+        val password:String = authentication?.credentials.toString()
+
+        // ユーザ情報検索
+        val user:MsbUser = msbUserService.findById(userId) ?: throw UsernameNotFoundException(username)
+        if (passwordEncoder.matches(password, user.password)) {
+            // あれば認証通す
+            // ROLE無指定ならデフォルトユーザへ
+            val roles: List<String> = MsbRole.fromOrdinal(user.role ?: 1).roleList
+            val authorities:List<GrantedAuthority> = AuthorityUtils.createAuthorityList(*roles.toTypedArray())
             return User
                     .withUsername(userId)
                     .password(password)
                     .authorities(authorities)
                     .build()
         }
-        throw UsernameNotFoundException("User not found: $userId");
+        throw UsernameNotFoundException(username)
     }
 
 

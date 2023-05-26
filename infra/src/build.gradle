@@ -18,7 +18,11 @@ repositories {
 	mavenCentral()
 }
 
+def junit_jupiter_version = '5.9.2'
+def mockito_kotlin_version = '2.0.0-alpha01'
+
 dependencies {
+	implementation 'org.springframework.session:spring-session-jdbc:3.0.0'
 	implementation 'org.webjars.npm:vuex:4.0.0-rc.2'
 	implementation 'org.webjars.npm:vue:3.2.20'
 	implementation 'org.webjars:webjars-locator:0.42'
@@ -32,7 +36,15 @@ dependencies {
 	runtimeOnly 'org.postgresql:postgresql'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'junit', module: 'junit'
+	}
+	// for Test(junit5)
+	testImplementation 'org.springframework.boot:spring-boot-starter-jetty'
+	testImplementation "org.junit.jupiter:junit-jupiter-api:$junit_jupiter_version"
+	testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junit_jupiter_version"
+	testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockito_kotlin_version"
 }
 
 war {
@@ -46,7 +58,7 @@ tasks.withType(KotlinCompile) {
 	}
 }
 
-tasks.named('test') {
+test {
 	useJUnitPlatform()
 }
 
@@ -56,5 +68,5 @@ task copyWar(type: Copy) {
 }
 
 task deploy {
-	dependsOn war, copyWar
+	dependsOn build, copyWar
 }

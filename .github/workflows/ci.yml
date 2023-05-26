@@ -1,0 +1,32 @@
+name: Test, Build, Deploy Jobs
+on:
+  push:
+
+jobs:
+  Test:
+    runs-on: ubuntu-latest
+    container:
+      image: gradle:7.6.1-jdk17-alpine
+    steps:
+      - name: start
+        run: echo Test start
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: checking checkout artificate
+        run: ls
+      - name: execute junit
+        run: gradle test
+        working-directory: ./infra/src
+      - name: end
+        run: echo Test end
+
+  Build:
+    runs-on: ubuntu-latest
+    container:
+      image: alpine:3.17
+    needs: Test
+    steps:
+      - name: start
+        run: echo Build start
+      - name: end
+        run: echo Test end  
