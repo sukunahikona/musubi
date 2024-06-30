@@ -42,4 +42,3 @@ out/
 ### node ###
 node_modules
 *.lock
-**/*.js
