@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "allowJs": true,
+    "strict": false,
+    "allowSyntheticDefaultImports": true,
+    "target": "es6",
+    "module": "ESNext",
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "lib": ["dom", "es6"],
+    "baseUrl": "./",
+    "paths": {
+      "@/*": [
+        "src/main/vue-client/*"
+      ]
+    }
+  }
+}

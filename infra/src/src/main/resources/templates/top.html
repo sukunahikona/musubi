@@ -3,14 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>DashBoard</title>
-    <link th:href="@{/webjars/bootstrap/5.0.2/css/bootstrap.min.css}" rel="stylesheet"/>
 </head>
 <body>
-<div class="container">
+<div id="top" class="container">
     <p style="text-align: center;" th:text="${message}"></p>
+    <p>{{message}}</p>
+    <p class="example1">example1</p>
+    <p class="example2">example2</p>
+    <p class="example3">example3</p>
+    <div class="item1">item1</div>
+    <div class="item2">item2</div>
+    <div class="disp-img">IMAGE TEST</div>
+    <button type="button" class="btn btn-lg btn-primary btn-block mb-2" @click="onBtnClick()">テスト送信</button>
     <form class="form-signin" th:action="@{/logout}" method="post">
         <button class="btn btn-lg btn-primary btn-block" type="submit">ログアウト</button>
     </form>
 </div>
+<script th:src="@{/js/top/index.js}" type="text/javascript" th:inline="javascript"></script>
 </body>
 </html>

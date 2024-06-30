@@ -3,10 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
-    <script th:src="@{/webjars/vue/dist/vue.global.js}"></script>
-    <script th:src="@{/webjars/vue/dist/vue.global.prod.js}"></script>
-    <script th:src="@{/webjars/vuex/dist/vuex.global.js}"></script>
 </head>
 <body>
 <div id="login-form" class="container">
@@ -14,12 +10,7 @@
     <p style="text-align: center;">{{ message }}</p>
     <form class="row g-3" th:action="@{/login}" method="post">
 
-        <div th:if="${showErrorMsg}" class="alert alert-danger" role="alert" th:text="${errorMsg}">
-            ※エラーメッセージ※
-        </div>
-        <div th:if="${showLogoutedMsg}" class="alert alert-success" role="alert" th:text="#{demo.login.logouted}">
-            ※ログアウトメッセージ※
-        </div>
+        <div th:if="${not #strings.isEmpty(errorMsg)}" class="alert alert-danger" role="alert" th:text="${errorMsg}"></div>
 
         <div class="row col-12 mb-2">
             <label for="userId" class="form-label">ユーザID</label>
@@ -34,6 +25,6 @@
         </div>
     </form>
 </div>
-<script th:src="@{/js/login/login.js}" type="text/javascript" th:inline="javascript"></script>
+<script th:src="@{/js/login/index.js}" type="text/javascript" th:inline="javascript"></script>
 </body>
 </html>
