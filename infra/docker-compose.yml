@@ -31,7 +31,7 @@ services:
       TZ: Asia/Tokyo
       JPDA_ADDRESS: 0.0.0.0:8000
       JPDA_TRANSPORT: dt_socket
-      SPRING_PROFILES_ACTIVE: prod
+      SPRING_PROFILES_ACTIVE: dev
     networks:
       musubi_net:
         ipv4_address: 172.16.0.3
