@@ -1,4 +1,4 @@
-import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/css/bootstrap'
 import 'bootstrap'
 import '@/style/top/top.css'
 import '@/style/top/top.scss'

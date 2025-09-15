@@ -2,7 +2,7 @@ import {ref} from "vue";
 
 export const useLogin = () => {
 
-    const title = ref<string | undefined>()
-    title.value = "ログイン画面(Vue側定義)"
-    return { title }
+    const message = ref<string | undefined>()
+    message.value = "ログイン情報を入力してください(Vue側定義)"
+    return { message }
 }

@@ -4,13 +4,15 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:dev": "webpack --mode development",
-    "build:prod": "webpack --mode production"
+    "build:local": "webpack --mode development --env ENV_FILE=.env/.env.local",
+    "build:dev": "webpack --mode development --env ENV_FILE=.env/.env.dev",
+    "build:prod": "webpack --mode production --env ENV_FILE=.env/.env.prod"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "dotenv-webpack": "^8.1.0",
     "ts-loader": "^9.5.1",
     "typescript": "^5.5.2",
     "vue": "^3.4.31",
