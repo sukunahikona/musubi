@@ -1,0 +1,10 @@
+p.example1 { color: red; }
+p.example2 { color: blue; }
+p.example3 { font-size: 80%; }
+
+.disp-img{
+    background-image:url(@/images/top/sample.jpg);             /* 画像のURLを指定       */
+    background-repeat:  no-repeat;                /* 画像の繰り返しを指定  */
+    width:auto;                                   /* 横幅のサイズを指定    */
+    height:400pX;                                 /* 縦幅のサイズを指定    */
+}

@@ -1,0 +1,12 @@
+$black: #000000;
+$position: left;
+
+.item1 {
+    color: $black;
+}
+
+.item2 {
+    background: $black;
+    margin-#{$position}: 30px;
+    // #{$変数名}と記述することで、その変数の値を文字列として使用できる。
+}

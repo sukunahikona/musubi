@@ -39,3 +39,6 @@ out/
 .yarn
 .pnp.cjs
 
+### node ###
+node_modules
+*.lock
